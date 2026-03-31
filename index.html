@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tandartsenpraktijk Goedhart | Zorgboulevard Baarn</title>
+    <meta name="description" content="Tandartsenpraktijk Goedhart verhuist naar Zorgboulevard Baarn, Baarnsche Dijk 8. Moderne tandheelkunde met persoonlijke aandacht.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a6b5a;
+            --primary-dark: #134d41;
+            --primary-light: #e8f5f1;
+            --accent: #2a9d8f;
+            --text: #2d3436;
+            --text-light: #636e72;
+            --white: #ffffff;
+            --bg: #f8fafe;
+            --shadow: 0 4px 24px rgba(0,0,0,0.08);
+            --shadow-lg: 0 12px 48px rgba(0,0,0,0.12);
+            --radius: 16px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            background: var(--bg);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+            transition: box-shadow 0.3s;
+        }
+
+        nav.scrolled {
+            box-shadow: var(--shadow);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--primary);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.1rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-cta {
+            background: var(--primary) !important;
+            color: var(--white) !important;
+            padding: 10px 24px;
+            border-radius: 50px;
+            transition: background 0.2s, transform 0.2s !important;
+        }
+
+        .nav-cta:hover {
+            background: var(--primary-dark) !important;
+            transform: translateY(-1px);
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .mobile-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--text);
+            margin: 6px 0;
+            transition: 0.3s;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 24px 80px;
+            background: linear-gradient(135deg, var(--white) 0%, var(--primary-light) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(42,157,143,0.08) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--white);
+            border: 1px solid rgba(26,107,90,0.2);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--primary);
+            margin-bottom: 24px;
+        }
+
+        .hero-badge .pulse {
+            width: 8px;
+            height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.5); }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.15;
+            color: var(--text);
+            margin-bottom: 24px;
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 40px;
+            max-width: 520px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 32px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(26,107,90,0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .hero-visual {
+            position: relative;
+        }
+
+        .hero-card {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 48px;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+        }
+
+        .hero-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 24px;
+            color: var(--primary);
+        }
+
+        .new-location {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+            margin-bottom: 24px;
+            padding: 20px;
+            background: var(--primary-light);
+            border-radius: 12px;
+        }
+
+        .new-location .icon {
+            width: 44px;
+            height: 44px;
+            background: var(--primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 1.2rem;
+        }
+
+        .new-location h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .new-location p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 16px 8px;
+            background: var(--bg);
+            border-radius: 12px;
+        }
+
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            margin-top: 4px;
+        }
+
+        /* Announcement Banner */
+        .announcement {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: var(--white);
+            padding: 80px 24px;
+            text-align: center;
+        }
+
+        .announcement-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .announcement h2 {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+
+        .announcement p {
+            font-size: 1.15rem;
+            opacity: 0.9;
+            margin-bottom: 32px;
+        }
+
+        .announcement-details {
+            display: inline-flex;
+            flex-direction: column;
+            gap: 12px;
+            background: rgba(255,255,255,0.15);
+            padding: 32px 48px;
+            border-radius: var(--radius);
+            backdrop-filter: blur(10px);
+            text-align: left;
+        }
+
+        .announcement-details .detail {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.05rem;
+        }
+
+        .announcement-details .detail-icon {
+            font-size: 1.2rem;
+        }
+
+        /* Services */
+        .services {
+            padding: 100px 24px;
+            background: var(--white);
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .section-tag {
+            display: inline-block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .service-card {
+            background: var(--bg);
+            border-radius: var(--radius);
+            padding: 36px;
+            transition: all 0.3s;
+            border: 1px solid transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow);
+            border-color: rgba(26,107,90,0.1);
+        }
+
+        .service-icon {
+            width: 56px;
+            height: 56px;
+            background: var(--primary-light);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .service-card p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Specialisaties */
+        .specialisaties {
+            padding: 100px 24px;
+            background: var(--bg);
+        }
+
+        .spec-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .spec-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 32px;
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            transition: all 0.3s;
+            border: 1px solid rgba(0,0,0,0.04);
+        }
+
+        .spec-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .spec-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--primary-light);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .spec-card h3 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .spec-card p {
+            font-size: 0.88rem;
+            color: var(--text-light);
+        }
+
+        /* Reviews */
+        .reviews {
+            padding: 100px 24px;
+            background: var(--white);
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .review-card {
+            background: var(--bg);
+            border-radius: var(--radius);
+            padding: 36px;
+            position: relative;
+        }
+
+        .review-stars {
+            color: #f4b400;
+            font-size: 1.1rem;
+            margin-bottom: 16px;
+            letter-spacing: 2px;
+        }
+
+        .review-card blockquote {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: var(--text);
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .review-author {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        /* Contact & Info */
+        .contact {
+            padding: 100px 24px;
+            background: var(--bg);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+        }
+
+        .contact-info {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 48px;
+            box-shadow: var(--shadow);
+        }
+
+        .contact-info h2 {
+            font-size: 2rem;
+            margin-bottom: 32px;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+            margin-bottom: 28px;
+        }
+
+        .contact-item .ci-icon {
+            width: 44px;
+            height: 44px;
+            background: var(--primary-light);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 1.1rem;
+        }
+
+        .contact-item h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .contact-item p, .contact-item a {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            text-decoration: none;
+        }
+
+        .contact-item a:hover {
+            color: var(--primary);
+        }
+
+        .openingstijden {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 48px;
+            box-shadow: var(--shadow);
+        }
+
+        .openingstijden h2 {
+            font-size: 2rem;
+            margin-bottom: 32px;
+        }
+
+        .tijd-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+            font-size: 0.95rem;
+        }
+
+        .tijd-row:last-of-type {
+            border-bottom: none;
+        }
+
+        .tijd-row .dag {
+            font-weight: 500;
+        }
+
+        .tijd-row .uur {
+            color: var(--text-light);
+        }
+
+        .spoed-banner {
+            margin-top: 32px;
+            padding: 20px;
+            background: #fef3e7;
+            border-radius: 12px;
+            border-left: 4px solid #e67e22;
+        }
+
+        .spoed-banner h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #d35400;
+            margin-bottom: 6px;
+        }
+
+        .spoed-banner p {
+            font-size: 0.88rem;
+            color: var(--text-light);
+        }
+
+        .spoed-banner a {
+            color: #d35400;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        /* Map */
+        .map-section {
+            width: 100%;
+            height: 400px;
+            filter: grayscale(20%);
+        }
+
+        .map-section iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Accreditaties */
+        .accreditaties {
+            padding: 60px 24px;
+            background: var(--white);
+            text-align: center;
+        }
+
+        .accreditaties p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 24px;
+            font-weight: 500;
+        }
+
+        .accreditatie-logos {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .accreditatie-item {
+            padding: 12px 24px;
+            background: var(--bg);
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-light);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text);
+            color: rgba(255,255,255,0.7);
+            padding: 60px 24px 32px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 48px;
+        }
+
+        .footer-brand h3 {
+            color: var(--white);
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+        }
+
+        .footer-brand p {
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        .footer-col h4 {
+            color: var(--white);
+            font-size: 0.95rem;
+            margin-bottom: 16px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--white);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 40px auto 0;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.85rem;
+            text-align: center;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 72px;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                flex-direction: column;
+                padding: 24px;
+                gap: 16px;
+                box-shadow: var(--shadow);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-toggle {
+                display: block;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+
+            .hero h1 {
+                font-size: 2.4rem;
+            }
+
+            .hero {
+                padding: 100px 24px 60px;
+                min-height: auto;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .spec-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .reviews-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .hero-stats {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .announcement h2 {
+                font-size: 1.8rem;
+            }
+
+            .announcement-details {
+                padding: 24px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">&#9790;</div>
+                Tandartsenpraktijk Goedhart
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#behandelingen">Behandelingen</a></li>
+                <li><a href="#specialisaties">Specialisaties</a></li>
+                <li><a href="#reviews">Ervaringen</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#contact" class="nav-cta">Inschrijven</a></li>
+            </ul>
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Menu openen">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="pulse"></span>
+                    Wij verhuizen naar een nieuwe locatie
+                </div>
+                <h1>Uw tandarts in Baarn, <span>nu op de Zorgboulevard</span></h1>
+                <p>Tandartsenpraktijk Goedhart verhuist naar de Zorgboulevard Baarn. Dezelfde vertrouwde zorg, in een moderne nieuwe praktijk op de Baarnsche Dijk 8.</p>
+                <div class="hero-buttons">
+                    <a href="tel:0355420931" class="btn btn-primary">
+                        &#9742; Bel ons: 035 542 09 31
+                    </a>
+                    <a href="#contact" class="btn btn-outline">
+                        Contact opnemen
+                    </a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-card">
+                    <h3>&#10148; Nieuwe locatie</h3>
+                    <div class="new-location">
+                        <div class="icon">&#9873;</div>
+                        <div>
+                            <h4>Zorgboulevard Baarn</h4>
+                            <p>Baarnsche Dijk 8<br>Baarn</p>
+                        </div>
+                    </div>
+                    <div class="new-location">
+                        <div class="icon">&#9202;</div>
+                        <div>
+                            <h4>Openingstijden</h4>
+                            <p>Ma t/m vr: 08:00 - 17:00</p>
+                        </div>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <div class="stat-number">11+</div>
+                            <div class="stat-label">Behandelingen</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">7+</div>
+                            <div class="stat-label">Specialisaties</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">5&#9733;</div>
+                            <div class="stat-label">Beoordeeld</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Verhuizing Announcement -->
+    <section class="announcement">
+        <div class="announcement-container">
+            <h2>Wij verhuizen!</h2>
+            <p>Tandartsenpraktijk Goedhart verruilt het Meander Medisch Centrum voor een gloednieuwe praktijk op de Zorgboulevard Baarn. Meer ruimte, modernere apparatuur en dezelfde persoonlijke aandacht die u van ons gewend bent.</p>
+            <div class="announcement-details">
+                <div class="detail">
+                    <span class="detail-icon">&#9873;</span>
+                    <span><strong>Nieuw adres:</strong> Baarnsche Dijk 8, Baarn</span>
+                </div>
+                <div class="detail">
+                    <span class="detail-icon">&#9752;</span>
+                    <span><strong>Locatie:</strong> Zorgboulevard Baarn</span>
+                </div>
+                <div class="detail">
+                    <span class="detail-icon">&#9742;</span>
+                    <span><strong>Telefoon:</strong> 035 542 09 31</span>
+                </div>
+                <div class="detail">
+                    <span class="detail-icon">&#9993;</span>
+                    <span><strong>E-mail:</strong> info@tandartsbaarn.nl</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Behandelingen -->
+    <section class="services" id="behandelingen">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">Behandelingen</span>
+                <h2>Het complete pakket tandheelkundige zorg</h2>
+                <p>Wij bieden een breed scala aan behandelingen, van preventieve controles tot esthetische tandheelkunde. Voorkomen is beter dan genezen.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">&#128269;</div>
+                    <h3>Periodieke controle</h3>
+                    <p>Regelmatige controles om uw gebit gezond te houden en problemen vroegtijdig te signaleren.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">&#10024;</div>
+                    <h3>Mondhygiëne &amp; preventie</h3>
+                    <p>Professionele gebitsreiniging en advies om tandvleesaandoeningen te voorkomen.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">&#9881;</div>
+                    <h3>Vullingen</h3>
+                    <p>Natuurlijk ogende vullingen in composiet voor een duurzaam en esthetisch resultaat.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">&#11088;</div>
+                    <h3>Tanden bleken</h3>
+                    <p>Professioneel bleken voor een stralend witte glimlach, veilig en effectief.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">&#128736;</div>
+                    <h3>Wortelkanaalbehandeling</h3>
+                    <p>Behoud van uw eigen tand door deskundige behandeling van de tandzenuw.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">&#128142;</div>
+                    <h3>Kronen &amp; bruggen</h3>
+                    <p>Hoogwaardige kronen en bruggen voor herstel van beschadigde of ontbrekende tanden.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">&#127776;</div>
+                    <h3>Facings</h3>
+                    <p>Dunne keramische schillen voor een perfecte glimlach en natuurlijke uitstraling.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">&#128119;</div>
+                    <h3>Sealen</h3>
+                    <p>Bescherming van kiezen tegen gaatjes, vooral bij kinderen en jongeren.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">&#128172;</div>
+                    <h3>Second opinion</h3>
+                    <p>Onafhankelijk advies over een eerder voorgestelde behandeling bij een andere tandarts.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specialisaties -->
+    <section class="specialisaties" id="specialisaties">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">Specialisaties</span>
+                <h2>Gespecialiseerde tandheelkundige zorg</h2>
+                <p>Naast reguliere tandheelkunde zijn wij gespecialiseerd in diverse aandachtsgebieden.</p>
+            </div>
+            <div class="spec-grid">
+                <div class="spec-card">
+                    <div class="spec-icon">&#9878;</div>
+                    <div>
+                        <h3>Gebitsslijtage &amp; tandenknarsen</h3>
+                        <p>Diagnose en behandeling van slijtage door knarsen of klemmen, inclusief bitplaten.</p>
+                    </div>
+                </div>
+                <div class="spec-card">
+                    <div class="spec-icon">&#128156;</div>
+                    <div>
+                        <h3>Angsttandarts</h3>
+                        <p>Speciaal aandacht en begeleiding voor patiënten met angst voor de tandarts.</p>
+                    </div>
+                </div>
+                <div class="spec-card">
+                    <div class="spec-icon">&#128118;</div>
+                    <div>
+                        <h3>Kinderen &mdash; Gewoon Gaaf</h3>
+                        <p>Kindvriendelijke behandelingen gericht op preventie en een positieve ervaring.</p>
+                    </div>
+                </div>
+                <div class="spec-card">
+                    <div class="spec-icon">&#128297;</div>
+                    <div>
+                        <h3>Implantaten</h3>
+                        <p>Vervanging van ontbrekende tanden met hoogwaardige implantaten voor een vast resultaat.</p>
+                    </div>
+                </div>
+                <div class="spec-card">
+                    <div class="spec-icon">&#128171;</div>
+                    <div>
+                        <h3>Onzichtbare beugels (aligners)</h3>
+                        <p>Discrete correctie van uw gebit met transparante aligners, zonder metalen beugel.</p>
+                    </div>
+                </div>
+                <div class="spec-card">
+                    <div class="spec-icon">&#127769;</div>
+                    <div>
+                        <h3>MRA anti-snurk/apneubeugel</h3>
+                        <p>Effectieve behandeling van snurken en slaapapneu met een op maat gemaakte beugel.</p>
+                    </div>
+                </div>
+                <div class="spec-card">
+                    <div class="spec-icon">&#128138;</div>
+                    <div>
+                        <h3>Parodontologie</h3>
+                        <p>Behandeling van tandvleesaandoeningen om uw gebit en tandvlees gezond te houden.</p>
+                    </div>
+                </div>
+                <div class="spec-card">
+                    <div class="spec-icon">&#128100;</div>
+                    <div>
+                        <h3>Mondzorg ouderen</h3>
+                        <p>Gerichte mondzorg afgestemd op de specifieke behoeften van oudere patiënten.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews -->
+    <section class="reviews" id="reviews">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">Ervaringen</span>
+                <h2>Wat onze patiënten zeggen</h2>
+                <p>Persoonlijke aandacht en kwaliteit staan bij ons centraal.</p>
+            </div>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <blockquote>"Fantastische praktijk! Zeer persoonlijke aandacht en altijd het gevoel dat er goed voor je gezorgd wordt. De behandelingen worden helder uitgelegd."</blockquote>
+                    <span class="review-author">Patiënt uit Baarn</span>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <blockquote>"Makkelijk bereikbaar en vriendelijk personeel. Ik voel me altijd op m'n gemak, zelfs als ik zenuwachtig ben. Echt een aanrader."</blockquote>
+                    <span class="review-author">Patiënt uit Baarn</span>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                    <blockquote>"Heel blij met het resultaat van mijn behandeling. Moderne praktijk met deskundig personeel dat de tijd voor je neemt."</blockquote>
+                    <span class="review-author">Patiënt uit Baarn</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Openingstijden -->
+    <section class="contact" id="contact">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">Contact</span>
+                <h2>Neem contact met ons op</h2>
+                <p>Wij staan klaar om u te helpen. Neem gerust contact met ons op voor een afspraak of meer informatie.</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h2>Contactgegevens</h2>
+                    <div class="contact-item">
+                        <div class="ci-icon">&#9873;</div>
+                        <div>
+                            <h4>Nieuw adres</h4>
+                            <p>Zorgboulevard Baarn<br>Baarnsche Dijk 8<br>Baarn</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="ci-icon">&#9742;</div>
+                        <div>
+                            <h4>Telefoon</h4>
+                            <a href="tel:0355420931">035 542 09 31</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="ci-icon">&#9993;</div>
+                        <div>
+                            <h4>E-mail</h4>
+                            <a href="mailto:info@tandartsbaarn.nl">info@tandartsbaarn.nl</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="ci-icon">&#9742;</div>
+                        <div>
+                            <h4>Telefonische bereikbaarheid</h4>
+                            <p>Ma-do: 08:00-12:00 &amp; 13:00-16:30<br>Vrijdag: 08:30-12:00</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="openingstijden">
+                    <h2>Openingstijden</h2>
+                    <div class="tijd-row">
+                        <span class="dag">Maandag</span>
+                        <span class="uur">08:00 - 17:00</span>
+                    </div>
+                    <div class="tijd-row">
+                        <span class="dag">Dinsdag</span>
+                        <span class="uur">08:00 - 17:00</span>
+                    </div>
+                    <div class="tijd-row">
+                        <span class="dag">Woensdag</span>
+                        <span class="uur">08:00 - 17:00</span>
+                    </div>
+                    <div class="tijd-row">
+                        <span class="dag">Donderdag</span>
+                        <span class="uur">08:00 - 17:00</span>
+                    </div>
+                    <div class="tijd-row">
+                        <span class="dag">Vrijdag</span>
+                        <span class="uur">08:00 - 17:00</span>
+                    </div>
+                    <div class="tijd-row">
+                        <span class="dag">Weekend</span>
+                        <span class="uur">Gesloten</span>
+                    </div>
+                    <div class="spoed-banner">
+                        <h4>Spoeddienst buiten kantooruren</h4>
+                        <p>Bel het spoedeisende nummer: <a href="tel:09008602">0900 8602</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Google Maps -->
+    <div class="map-section">
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2448.5!2d5.287!3d52.211!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sBaarnsche+Dijk+8+Baarn!5e0!3m2!1snl!2snl!4v1"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Locatie Tandartsenpraktijk Goedhart - Zorgboulevard Baarn">
+        </iframe>
+    </div>
+
+    <!-- Accreditaties -->
+    <section class="accreditaties">
+        <p>Aangesloten bij</p>
+        <div class="accreditatie-logos">
+            <span class="accreditatie-item">KNMT</span>
+            <span class="accreditatie-item">KRT</span>
+            <span class="accreditatie-item">NVTS</span>
+            <span class="accreditatie-item">NVvGd</span>
+            <span class="accreditatie-item">Gewoon Gaaf</span>
+            <span class="accreditatie-item">Ivoren Kruis</span>
+            <span class="accreditatie-item">SDA</span>
+            <span class="accreditatie-item">Spark</span>
+            <span class="accreditatie-item">NVOI</span>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h3>Tandartsenpraktijk Goedhart</h3>
+                <p>Moderne tandheelkunde met persoonlijke aandacht in Baarn. Nu gevestigd op de Zorgboulevard Baarn, Baarnsche Dijk 8.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Behandelingen</h4>
+                <ul>
+                    <li><a href="#behandelingen">Periodieke controle</a></li>
+                    <li><a href="#behandelingen">Mondhygiëne</a></li>
+                    <li><a href="#behandelingen">Tanden bleken</a></li>
+                    <li><a href="#behandelingen">Kronen &amp; bruggen</a></li>
+                    <li><a href="#behandelingen">Facings</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Specialisaties</h4>
+                <ul>
+                    <li><a href="#specialisaties">Angsttandarts</a></li>
+                    <li><a href="#specialisaties">Implantaten</a></li>
+                    <li><a href="#specialisaties">Aligners</a></li>
+                    <li><a href="#specialisaties">Parodontologie</a></li>
+                    <li><a href="#specialisaties">Kinderen</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Tandartsenpraktijk Goedhart. Alle rechten voorbehouden.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
+        });
+
+        // Mobile menu toggle
+        document.getElementById('mobileToggle').addEventListener('click', () => {
+            document.getElementById('navLinks').classList.toggle('active');
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navLinks').classList.remove('active');
+            });
+        });
+
+        // Smooth reveal animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.service-card, .spec-card, .review-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+
+</body>
+</html>
